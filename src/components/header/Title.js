@@ -1,11 +1,9 @@
 /**
- * Created by Milan Gallas on 30.8.2016.
+ * Created by Milan Gallas on 6.9.2016.
  */
 import React from 'react';
-import Header from './header';
-import Footer from './footer';
 
-export default class App extends React.Component {
+export default class Title extends React.Component {
 
 
     /**
@@ -16,17 +14,8 @@ export default class App extends React.Component {
      * @returns {XML}
      */
     render() {
-
-        /*var list = [
-            <Header />,
-            <Footer />
-        ]*/
-
         return (
-            <div>
-                <Header />
-                <Footer />
-            </div>
+            <h1>It works in header!!</h1>
         );
     }
 }

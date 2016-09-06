@@ -15,9 +15,10 @@ export default class Header extends React.Component {
      * @returns {XML}
      */
     render() {
+        console.log(this.props);
         return (
             <header>
-                <Title />
+                <Title title={this.props.title}/>
             </header>
         );
     }

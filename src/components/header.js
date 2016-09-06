@@ -19,7 +19,19 @@ export default class Header extends React.Component {
         return (
             <header>
                 <Title title={this.props.title}/>
+                <input value={this.props.title} onChange={this.handleChange.bind(this)} ref="title"/>
             </header>
         );
+    }
+
+    /**
+     * z akce se dá vytáhnou hodnota, která byla zadána ve formulářovém prvku.
+     * Pokud by bylo inputů více, muselo by se použít pole refs. každý input by měl atribut ref.
+     *
+     * @param e
+     */
+    handleChange(e){
+        const title = e.target.value;
+        this.props.changeTitle(title);
     }
 }

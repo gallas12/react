@@ -6,7 +6,7 @@ import Header from './header';
 import Footer from './footer';
 
 
-const title2 = "Wellcome Galileo galielei in state";
+const title = "Wellcome Galileo galielei in state";
 export default class App extends React.Component {
 
     /**
@@ -23,19 +23,30 @@ export default class App extends React.Component {
      */
     constructor(){
         super();
-        this.state = {name:"will", title2:title2}
+        this.state = {name:"will", title:title}
 
     }
 
+    /**
+     * Metoda pro změnu titulku se nachází v hlavní komponentě, protože zde má přístup ke state poli
+     * metoda se pak injectuje ostatním komponentám.
+     * Tím že se honota změní tady, tak pak může jednoduš proplouvat ke všem ostatním komponentám, které hodnotu používají)
+     *
+     * bind(this) - zapříčiní to, že se bude metoda volat právě ve třídě app, jinak by se bralo, že metoda je ve třídě,
+     * kde se aktuálně volá, takže by ji překladaš hledal například ve třídě Header
+     * @param title
+     */
+    changeTitle(title){
+        this.setState({ title });
+    }
+
     render() {
-        const title = "Wellcome Gali";
-        setTimeout(() => {
-            this.setState({name:"Bob"});
-        }, 1000);
         return (
             <div>
-                <Header title={title} />
-                <Header title={this.state.title2} />
+                <Header
+                    title={this.state.title}
+                    changeTitle={this.changeTitle.bind(this)}
+                />
                 {this.state.name}
                 <Footer />
             </div>

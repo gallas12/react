@@ -14,13 +14,19 @@ export default class App extends React.Component {
     }
 
     /**
+     * const { history } = this.props; => const history = this.props.history;
+     *
      * V elementu link je atribut to. Hodnota se musí schodovat s routou, která je nastavená v souboru index.js
      * Link je komponenta react-router
+     *
+     *  <Link to="settings"><button>settings</button></Link> - nefunguje
      *
      * Dále nastavím zobrazení podřazených stránek před výpisem
      * @returns {XML}
      */
     render() {
+        const { history } = this.props;
+        console.log(history.isActive("archives"));
         return (
             <div>
                 <h1>KillerNews.net</h1>

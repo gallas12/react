@@ -19,12 +19,12 @@ import Settings from './pages/Settings';
 const app = document.getElementById('app');
 
 //renderer = nastavení rout + defaultní routa + history api
-//  <Route path="archives(/:article)" name="archives" component={Archives}></Route>
+// pokud je parametr v routě v závorkách, je nepovinný. př archives(/:article)
 ReactDOM.render(
     <Router history={hashHistory}>
         <Route path="/" component={App}>
             <IndexRoute component={Featured}></IndexRoute>
-            <Route path="archives" name="archives" component={Archives}></Route>
+            <Route path="archives(/:article)" name="archives" component={Archives}></Route>
             <Route path="settings" name="settings" component={Settings}></Route>
         </Route>
     </Router>,

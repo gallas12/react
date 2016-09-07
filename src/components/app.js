@@ -3,6 +3,8 @@
  */
 import React from 'react';
 import Link from "react-router";
+import Footer from './layout/Footer';
+import Nav from './layout/Nav';
 
 export default class App extends React.Component {
 
@@ -14,24 +16,30 @@ export default class App extends React.Component {
     }
 
     /**
-     * const { history } = this.props; => const history = this.props.history;
-     *
-     * V elementu link je atribut to. Hodnota se musí schodovat s routou, která je nastavená v souboru index.js
-     * Link je komponenta react-router
-     *
-     *  <Link to="settings"><button>settings</button></Link> - nefunguje
-     *
-     * Dále nastavím zobrazení podřazených stránek před výpisem
+     * const { location } = this.props;   ===   const location = this.props.location
+     * Zavolá se komponenta header a předám ji parametr location
+     * Pak samotné tělo hlavní stránky - layout + načtění daných podstránek
+     * Nakonec zavolání komponenty pro vykreslení patičky
      * @returns {XML}
      */
     render() {
-        const { history } = this.props;
-        console.log(history.isActive("archives"));
+        const { location } = this.props;
+        const containerStyle = {
+            marginTop: "60px"
+        }
+
         return (
             <div>
-                <h1>KillerNews.net</h1>
-                {this.props.children}
-                <button onClick={this.navigate.bind(this)}>Featured</button>
+                <Nav location={location} />
+                <div className="container" style={containerStyle} >
+                    <div className="row">
+                        <div className="col-md-12">
+                            <h1>KillerNews.net</h1>
+                            {this.props.children}
+                        </div>
+                    </div>
+                    <Footer />
+                </div>
             </div>
         );
     }
